@@ -80,11 +80,13 @@ const userLogIn=async(req,res)=>{
         } else {
             deviceType = 'desktop';
         }
+        const ip_address = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-        // Save device type in the user model (adjust this part according to your schema)
+        // Save device type and IP address in the user model
         find.deviceType = deviceType;
+        find.ipAddress = ip_address;
         await find.save();
-        
+            
 
 
 
@@ -92,6 +94,7 @@ const userLogIn=async(req,res)=>{
             message:"User Login Successfully",
             email:email,
             deviceType:find.deviceType,
+            ipAddress:find.ipAddress,
             token:token
         })
 
