@@ -7,6 +7,7 @@ const status = {
     UnprocessableEntity: 422,
     InternalServerError: 500,
     verifyEmailId: 901,
+    alreadyExist:409,
   };
   
   module.exports = {status};

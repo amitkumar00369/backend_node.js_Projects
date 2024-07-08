@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 require("./db/db_connect");
 const UserRoute = require('./routes/user.rotes');
+const adminRoute = require('./routes/admin.routes');
 const app = express();
 const cors = require("cors");
 
@@ -16,6 +17,8 @@ app.use(
 );
 
 app.use("/", UserRoute);
+// admin routes
+app.use("", adminRoute);
 
 app.listen(process.env.port, function () {
   console.log("🚀 ready to go",process.env.port);
